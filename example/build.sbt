@@ -1,4 +1,4 @@
-name := "trigram-spark-cass"
+name := "example-spark-cass"
 
 version := "1.0"
 

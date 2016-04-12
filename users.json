@@ -1,0 +1,5 @@
+{"name":"Alice", "active":true}
+{"name":"Bob", "age":30, "active":true}
+{"name":"Kevin", "age":9, "active":true}
+{"name":"Maria", "age":28, "active":false}
+{"name":"Tim", "age":41, "active":false}

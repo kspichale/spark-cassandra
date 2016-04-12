@@ -39,12 +39,12 @@ RUN perl -pi.bak -e 's/ulimit/#ulimit/g' /etc/init.d/cassandra
 
 # install test data
 WORKDIR /root
-COPY trigrams /root/trigrams
-COPY setup.sql /root/setup.sql
-COPY trigram /root/trigram
+COPY example /root/example
+COPY example.sql /root/example.sql
+COPY example-input /root/example-input
 
 # start cassandra and load test db
-RUN service cassandra start; sleep 15; cqlsh < setup.sql 
+RUN service cassandra start; sleep 15; cqlsh < example.sql 
 
 # build a nice simple script to run spark-cassandra
 RUN echo '#!/bin/bash' > spark-cass ; echo 'spark-shell --jars $(echo /usr/local/cassandra-java-driver/lib/*.jar /usr/local/cassandra-java-driver/*.jar /usr/local/joda-time-2.8.jar /usr/local/spark-cassandra-connector_2.10-1.4.0.jar /usr/share/cassandra/apache-cassandra-thrift-*.jar /usr/share/cassandra/lib/libthrift-*.jar | sed -e "s/ /,/g")' >> spark-cass ; chmod 755 spark-cass
